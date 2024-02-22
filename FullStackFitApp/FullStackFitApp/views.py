@@ -19,6 +19,3 @@ class FitnessActivityView(View):
     def get(self, request, *args, **kwargs):
         activities = list(FitnessActivity.objects.values())
         return JsonResponse({'activities': activities})
-
-
-S
