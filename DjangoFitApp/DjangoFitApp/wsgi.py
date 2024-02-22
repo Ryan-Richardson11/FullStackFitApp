@@ -1,5 +1,5 @@
 """
-WSGI config for FullStackFitApp project.
+WSGI config for DjangoFitApp project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'FullStackFitApp.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoFitApp.settings')
 
 application = get_wsgi_application()
