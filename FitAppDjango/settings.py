@@ -75,11 +75,12 @@ WSGI_APPLICATION = 'FullStackFitApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'FitnessUserData',
-        'CLIENT': {
-            'host': 'mongodb://localhost:27017',
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'FitnessData',
+        'USER': 'root',   # Replace with your MySQL username
+        'PASSWORD': ''  # Replace with your MySQL password
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
