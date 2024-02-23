@@ -78,7 +78,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'FitnessData',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'Michigan21!',
         'HOST': 'localhost',
         'PORT': '3306',
     }
