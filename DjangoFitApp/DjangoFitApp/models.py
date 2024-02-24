@@ -8,3 +8,11 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    weight_goal = models.FloatField(null=True, blank=True)
+    benchpress_goal = models.FloatField(null=True, blank=True)
+    squat_goal = models.FloatField(null=True, blank=True)
+    deadlift_goal = models.FloatField(null=True, blank=True)

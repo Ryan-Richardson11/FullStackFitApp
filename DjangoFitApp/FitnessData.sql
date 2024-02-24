@@ -1,5 +1,0 @@
-DROP DATABASE IF EXISTS FitnessData;
-
-CREATE DATABASE FitnessData;
-
-USE FitnessData;
