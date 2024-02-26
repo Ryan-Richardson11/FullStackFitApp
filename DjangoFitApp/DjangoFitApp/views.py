@@ -1,10 +1,13 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import status
 from django.contrib.auth.models import User
+from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
+from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth import authenticate
 
 """
 API endpoint for creating a new user in the database.
@@ -47,21 +50,24 @@ If they are, enables access to user data/updating data.
 @csrf_exempt
 @api_view(['POST'])
 def user_login(request):
+    print('Request Data:', request.data)
+    if request.method != 'POST':
+        return Response({'error': 'Invalid request method'}, status=status.HTTP_400_BAD_REQUEST)
     try:
         # Extract data from request
         username = request.data.get('username')
         password = request.data.get('password')
 
-        # Does the email already exist
-        if User.objects.filter(username=username).exists():
-            return Response({'error': 'Email is already in use'}, status=status.HTTP_400_BAD_REQUEST)
+        # Check if the user exists
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # User credentials are correct, generate a token
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key, 'message': 'User logged in successfully'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
-        # Add login logic here
-
-        # Return success response
-        return Response({'message': 'User logged in successfully'}, status=status.HTTP_201_CREATED)
     except Exception as e:
-        # Return error response
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
@@ -95,4 +101,33 @@ def set_goals(request):
         return Response({'message': 'Goals set successfully'}, status=status.HTTP_201_CREATED)
     except Exception as e:
         # Return error response
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+API endpoint for returning the user goals to the client.
+Updates goals based on form submission.
+User should already be logged into their accounts.
+"""
+
+
+@api_view(['GET'])
+@login_required
+def get_goals(request):
+    try:
+        user = request.user
+        user_profile = UserProfile.objects.get(user=user)
+
+        # Retrieve goals from user_profile
+        goals = {
+            'weight': user_profile.weight_goal,
+            'benchpress': user_profile.benchpress_goal,
+            'squat': user_profile.squat_goal,
+            'deadlift': user_profile.deadlift_goal
+        }
+
+        return Response(goals, status=status.HTTP_200_OK)
+    except UserProfile.DoesNotExist:
+        return Response({'error': 'User profile does not exist'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)

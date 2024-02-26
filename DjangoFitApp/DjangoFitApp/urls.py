@@ -16,11 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from .views import create_user, set_goals
+from .views import create_user, set_goals, get_goals, user_login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('api/create_user/', create_user, name='create_user'),
     path('api/set_goals/', set_goals, name='set_goals'),
+    path('api/get_goals/', get_goals, name='get_goals'),
+    path('api/user_login/', user_login, name='user_login'),
 ]
