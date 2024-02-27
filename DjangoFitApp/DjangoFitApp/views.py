@@ -51,6 +51,8 @@ If they are, enables access to user data/updating data.
 
 @csrf_exempt
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
 def user_login(request):
     print('Request Data:', request.data)
     try:
@@ -69,13 +71,6 @@ def user_login(request):
 
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
-
-
-class CustomAuthToken(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        token, created = Token.objects.get_or_create(user=request.user)
-        return Response({'token': token.key, 'message': 'User logged in successfully'})
 
 
 """
