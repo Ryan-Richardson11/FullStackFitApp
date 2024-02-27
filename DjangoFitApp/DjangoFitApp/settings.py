@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'DjangoFitApp',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,15 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_COOKIE_SECURE = False
 CSRF_USE_SESSIONS = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+}

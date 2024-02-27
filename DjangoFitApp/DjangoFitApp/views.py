@@ -1,13 +1,13 @@
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
-from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
+from rest_framework.authtoken.views import ObtainAuthToken
 
 """
 API endpoint for creating a new user in the database.
@@ -18,6 +18,8 @@ Else creates one and returns successful response
 
 @csrf_exempt
 @api_view(['POST'])
+@authentication_classes([])
+@permission_classes([])
 def create_user(request):
     try:
         # Extract data from request
@@ -51,8 +53,6 @@ If they are, enables access to user data/updating data.
 @api_view(['POST'])
 def user_login(request):
     print('Request Data:', request.data)
-    if request.method != 'POST':
-        return Response({'error': 'Invalid request method'}, status=status.HTTP_400_BAD_REQUEST)
     try:
         # Extract data from request
         username = request.data.get('username')
@@ -69,6 +69,13 @@ def user_login(request):
 
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        token, created = Token.objects.get_or_create(user=request.user)
+        return Response({'token': token.key, 'message': 'User logged in successfully'})
 
 
 """
