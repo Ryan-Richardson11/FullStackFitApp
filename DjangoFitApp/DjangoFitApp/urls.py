@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from .views import create_user, set_goals, get_goals, user_login, get_all_users, log_exercise
+from .views import create_user, set_goals, get_goals, user_login, get_all_users, log_exercise, track_progress
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('api/user_login/', user_login, name='user_login'),
     path('api/get_all_users/', get_all_users, name='get_all_users'),
     path('api/log_exercise/', log_exercise, name='log_exercise'),
+    path('api/track_progress/', track_progress, name='track_progress'),
 ]

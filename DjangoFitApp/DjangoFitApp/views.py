@@ -173,6 +173,46 @@ def log_exercise(request):
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET'])
+@login_required
+def track_progress(request):
+    try:
+        user = request.user
+        user_profile = UserProfile.objects.get(user=user)
+
+        def calculate_progress(goal, current):
+            if goal is not None and current is not None and current != 0:
+                percentage = (current / goal) * 100
+                return round(percentage, 1)
+            return None
+
+        user_profile.weight_progress = calculate_progress(
+            user_profile.weight_goal, user_profile.weight_current)
+        user_profile.benchpress_progress = calculate_progress(
+            user_profile.benchpress_goal, user_profile.benchpress_current)
+        user_profile.squat_progress = calculate_progress(
+            user_profile.squat_goal, user_profile.squat_current)
+        user_profile.deadlift_progress = calculate_progress(
+            user_profile.deadlift_goal, user_profile.deadlift_current)
+        user_profile.save()
+
+        # Retrieve progress metric from user_profile
+        goals = {
+            'weight': user_profile.weight_progress,
+            'benchpress': user_profile.benchpress_progress,
+            'squat': user_profile.squat_progress,
+            'deadlift': user_profile.deadlift_progress
+        }
+        print(goals)
+        return Response(goals, status=status.HTTP_200_OK)
+    except UserProfile.DoesNotExist:
+        return Response({'error': 'User profile does not exist'}, status=status.HTTP_404_NOT_FOUND)
+    except Exception as e:
+        print('Exception:', e)
+        print('Request:', request)
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
 """
 API endpoint for returning all users in the database.
 Used to see real time updates during development.

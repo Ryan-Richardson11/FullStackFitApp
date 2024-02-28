@@ -5,6 +5,7 @@ import SetGoals from './setGoals';
 import UserLogin from './userLogin';
 import AllUsers from './admin';
 import LogExercise from './logExercies';
+import TrackProgress from './trackProgress';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -12,12 +13,12 @@ function App() {
   const renderPage = () => {
     // Redirects to page based on button click
     switch (currentPage) {
-      case 'homepage':
-        return <CreateUserAccount />;
       case 'setGoals':
         return <SetGoals />;
       case 'logExercise':
         return <LogExercise />
+      case 'trackProgress':
+        return <TrackProgress />
 
       default:
         return (

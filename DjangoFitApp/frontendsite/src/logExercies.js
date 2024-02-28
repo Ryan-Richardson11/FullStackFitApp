@@ -27,7 +27,6 @@ function LogExercise() {
         }
 
         console.log('Received Token:', authToken);
-        console.log('userGoals:', userCurrent);
 
         const numericUserGoals = {
             weight: parseFloat(userCurrent.weight),
