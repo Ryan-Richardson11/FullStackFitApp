@@ -7,8 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, User
 from django.contrib.auth import authenticate
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
 
 """
 API endpoint for creating a new user in the database.
@@ -139,3 +139,67 @@ def get_goals(request):
         print('Exception:', e)
         print('Request:', request)
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+API endpoint for setting the users current daily metrics.
+Updates metrics based on form submission.
+User should already be logged into their accounts.
+"""
+
+
+@api_view(['POST'])
+@login_required
+def log_exercise(request):
+    try:
+        user = request.user
+        # Extract data from request
+        weight_current = request.data.get('weight')
+        benchpress_current = request.data.get('benchpress')
+        squat_current = request.data.get('squat')
+        deadlift_current = request.data.get('deadlift')
+
+        # Update user profile with goals
+        user_profile, created = UserProfile.objects.get_or_create(user=user)
+        user_profile.weight_current = weight_current
+        user_profile.benchpress_current = benchpress_current
+        user_profile.squat_current = squat_current
+        user_profile.deadlift_current = deadlift_current
+        user_profile.save()
+        # Return success response
+        return Response({'message': 'Todays metrics set successfully'}, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        # Return error response
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+API endpoint for returning all users in the database.
+Used to see real time updates during development.
+"""
+
+
+@csrf_exempt
+@authentication_classes([])
+@permission_classes([])
+@require_GET
+def get_all_users(request):
+    try:
+        user_profiles = UserProfile.objects.all()
+        users_data = []
+
+        for user_profile in user_profiles:
+            user_data = {
+                'username': user_profile.user.username,
+                'email': user_profile.user.email,
+                'weight_goal': user_profile.weight_goal,
+                'benchpress_goal': user_profile.benchpress_goal,
+                'squat_goal': user_profile.squat_goal,
+                'deadlift_goal': user_profile.deadlift_goal,
+            }
+            users_data.append(user_data)
+
+        return JsonResponse({'users': users_data}, status=200)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
