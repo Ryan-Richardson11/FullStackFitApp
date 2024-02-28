@@ -5,9 +5,8 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from .models import UserProfile
+from .models import UserProfile, User
 from django.contrib.auth import authenticate
-from rest_framework.authtoken.views import ObtainAuthToken
 
 """
 API endpoint for creating a new user in the database.
@@ -27,11 +26,14 @@ def create_user(request):
         email = request.data.get('email')
         password = request.data.get('password')
 
+        print(
+            f"Received data - Username: {username}, Email: {email}, Password: {password}")
+
         # Does the email already exist
         if User.objects.filter(email=email).exists():
             return Response({'error': 'Email is already in use'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Create user
+        # Create the user in the database
         new_user = User.objects.create_user(
             username=username, email=email, password=password)
 
@@ -39,7 +41,7 @@ def create_user(request):
         return Response({'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
     except Exception as e:
         # Return error response
-        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': str(e), 'received_data': request.data}, status=status.HTTP_400_BAD_REQUEST)
 
 
 """
@@ -65,7 +67,7 @@ def user_login(request):
         if user is not None:
             # User credentials are correct, generate a token
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key, 'message': 'User logged in successfully'}, status=status.HTTP_200_OK)
+            return Response({'token': token.key}, status=status.HTTP_200_OK)
         else:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -117,6 +119,8 @@ User should already be logged into their accounts.
 @login_required
 def get_goals(request):
     try:
+        print('Received Token:', request.META.get('HTTP_AUTHORIZATION'))
+
         user = request.user
         user_profile = UserProfile.objects.get(user=user)
 
@@ -132,4 +136,6 @@ def get_goals(request):
     except UserProfile.DoesNotExist:
         return Response({'error': 'User profile does not exist'}, status=status.HTTP_404_NOT_FOUND)
     except Exception as e:
+        print('Exception:', e)
+        print('Request:', request)
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
