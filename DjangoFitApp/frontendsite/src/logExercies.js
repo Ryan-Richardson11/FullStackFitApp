@@ -38,7 +38,7 @@ function LogExercise() {
 
         try {
 
-            const response = await fetch('http://localhost:8000/api/set_goals/', {
+            const response = await fetch('http://localhost:8000/api/log_exercise/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ function LogExercise() {
             // Check if the request was successful
             if (response.ok) {
                 // Fetch goals again to get the updated goals
-                console.log('Goals set successfully');
+                console.log('Todays Metrics Updated');
             } else {
                 console.error('Error setting goals');
             }

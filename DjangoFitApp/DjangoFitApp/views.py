@@ -192,10 +192,18 @@ def get_all_users(request):
             user_data = {
                 'username': user_profile.user.username,
                 'email': user_profile.user.email,
+
                 'weight_goal': user_profile.weight_goal,
+                'weight_current': user_profile.weight_current,
+
                 'benchpress_goal': user_profile.benchpress_goal,
+                'benchpress_current': user_profile.benchpress_current,
+
                 'squat_goal': user_profile.squat_goal,
+                'squat_current': user_profile.squat_current,
+
                 'deadlift_goal': user_profile.deadlift_goal,
+                'deadlift_current': user_profile.deadlift_current,
             }
             users_data.append(user_data)
 

@@ -4,6 +4,7 @@ import CreateUserAccount from './createUserAccount';
 import SetGoals from './setGoals';
 import UserLogin from './userLogin';
 import AllUsers from './admin';
+import LogExercise from './logExercies';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -15,6 +16,8 @@ function App() {
         return <CreateUserAccount />;
       case 'setGoals':
         return <SetGoals />;
+      case 'logExercise':
+        return <LogExercise />
 
       default:
         return (
