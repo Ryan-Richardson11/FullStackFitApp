@@ -7,6 +7,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile, User
 from django.contrib.auth import authenticate
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 """
 API endpoint for creating a new user in the database.
@@ -119,8 +121,6 @@ User should already be logged into their accounts.
 @login_required
 def get_goals(request):
     try:
-        print('Received Token:', request.META.get('HTTP_AUTHORIZATION'))
-
         user = request.user
         user_profile = UserProfile.objects.get(user=user)
 
