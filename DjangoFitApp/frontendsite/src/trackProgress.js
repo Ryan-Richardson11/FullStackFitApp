@@ -73,12 +73,22 @@ function TrackProgress() {
             fontWeight: 'normal',
             marginBottom: '10px',
         },
+        header: {
+            fontSize: '18px',
+            fontWeight: 'bold',
+            marginBottom: '5px',
+            textAlign: 'center',
+        },
         progressBar: {
+            margin: '10px auto',
             height: '40px',
             width: '75%',
             backgroundColor: '#ddd',
             borderRadius: '8px',
             overflow: 'hidden',
+        },
+        progressTitle: {
+            margin: '0',
         },
         loadingWeight: {
             height: '100%',
@@ -120,27 +130,43 @@ function TrackProgress() {
                 <p>Deadlift: {userProgress.deadlift} %</p>
             </div>
             <br />
-            <div style={styles.progressBar}>
-                <div style={styles.loadingWeight}>
-                    {userProgress.weight}%
-                </div>
-            </div >
+
+            <div style={styles.progressTitle}>
+                <h4 style={styles.header}>Weight</h4>
+                <div style={styles.progressBar}>
+                    <div style={styles.loadingWeight}>
+                        {userProgress.weight}%
+                    </div>
+                </div >
+            </div>
             <br />
-            <div style={styles.progressBar}>
-                <div style={styles.loadingBenchpress}>
-                    {userProgress.benchpress}%
+
+            <div style={styles.progressTitle}>
+                <h4 style={styles.header}>Benchpress</h4>
+                <div style={styles.progressBar}>
+                    <div style={styles.loadingBenchpress}>
+                        {userProgress.benchpress}%
+                    </div>
                 </div>
             </div>
             <br />
-            <div style={styles.progressBar}>
-                <div style={styles.loadingSquat}>
-                    {userProgress.squat}%
+
+            <div style={styles.progressTitle}>
+                <h4 style={styles.header}>Squat</h4>
+                <div style={styles.progressBar}>
+                    <div style={styles.loadingSquat}>
+                        {userProgress.squat}%
+                    </div>
                 </div>
             </div>
             <br />
-            <div style={styles.progressBar}>
-                <div style={styles.loadingDeadlift}>
-                    {userProgress.deadlift}%
+
+            <div style={styles.progressTitle}>
+                <h4 style={styles.header}>Deadlift</h4>
+                <div style={styles.progressBar}>
+                    <div style={styles.loadingDeadlift}>
+                        {userProgress.deadlift}%
+                    </div>
                 </div>
             </div>
         </div >
