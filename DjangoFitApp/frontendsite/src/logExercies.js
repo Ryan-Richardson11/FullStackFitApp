@@ -60,6 +60,13 @@ function LogExercise() {
         } catch (error) {
             console.error('Error:', error);
         }
+        // Clear form
+        setUserCurrent({
+            weight: '',
+            benchpress: '',
+            squat: '',
+            deadlift: '',
+        });
     };
 
     /*
@@ -149,7 +156,7 @@ function LogExercise() {
                         </div>
                         <div className="log-exercise-form" style={styles.logExerciseForm}>
                             <div className="log-exercise" style={styles.logExercise}>
-                                <h2 style={styles.h2}>Todays Metrics</h2>
+                                <h2 style={styles.h2}>Today's Metrics</h2>
                                 <form onSubmit={handleFormSubmit}>
                                     <label style={styles.label}>
                                         Weight (lbs):

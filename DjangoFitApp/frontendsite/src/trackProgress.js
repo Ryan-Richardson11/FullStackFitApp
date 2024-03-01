@@ -163,7 +163,7 @@ function TrackProgress() {
                             </div>
                         </div>
                         <div className='user-progress' style={styles.userProgress}>
-                            <h3>Progress</h3>
+                            <h3>Current Progress</h3>
                             <p>Weight: {userProgress.weight} %</p>
                             <p>Benchpress: {userProgress.benchpress} %</p>
                             <p>Squat: {userProgress.squat} %</p>

@@ -110,6 +110,13 @@ function SetGoals() {
         } catch (error) {
             console.error('Error:', error);
         }
+        // Clear form
+        setUserGoals({
+            weight: '',
+            benchpress: '',
+            squat: '',
+            deadlift: '',
+        });
     };
 
     /*
