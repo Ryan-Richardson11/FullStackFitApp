@@ -22,28 +22,35 @@ function App() {
 
       default:
         return (
-          <div className="App">
-            <div className="center-column">
-              <div className="log-button">
-                <button onClick={() => setCurrentPage('logExercise')}>
-                  Log Exercise
-                </button>
+          <div>
+            <div className='Title-home'>
+              <div className='title-text'>
+                <h1>My Fitness App</h1>
               </div>
-              <div className="goal-button">
-                <button onClick={() => setCurrentPage('setGoals')}>
-                  Set Goals
-                </button>
-              </div>
-              <div className="track-button">
-                <button onClick={() => setCurrentPage('trackProgress')}>
-                  Track Progress
-                </button>
+            </div>
+            <div className="App">
+              <div className="center-column">
+                <div className="log-button-home">
+                  <button onClick={() => setCurrentPage('logExercise')}>
+                    Log Exercise
+                  </button>
+                </div>
+                <div className="goal-button-home">
+                  <button onClick={() => setCurrentPage('setGoals')}>
+                    Set Goals
+                  </button>
+                </div>
+                <div className="track-button-home">
+                  <button onClick={() => setCurrentPage('trackProgress')}>
+                    Track Progress
+                  </button>
+                  <AllUsers />
+                </div>
               </div>
               <CreateUserAccount />
               <UserLogin />
-              <AllUsers />
             </div>
-          </div>
+          </div >
         );
     }
   };
@@ -51,4 +58,4 @@ function App() {
   return <>{renderPage()}</>;
 }
 
-export default App;
+export default App

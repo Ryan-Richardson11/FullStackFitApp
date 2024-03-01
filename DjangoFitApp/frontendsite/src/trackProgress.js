@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import SetGoals from './setGoals';
+import LogExercise from './logExercies';
+import App from './App';
 
 function TrackProgress() {
 
@@ -120,56 +123,95 @@ function TrackProgress() {
         },
     };
 
-    return (
-        <div>
-            <div className='user-progress' style={styles.userProgress}>
-                <h3>Progress</h3>
-                <p>Weight: {userProgress.weight} %</p>
-                <p>Benchpress: {userProgress.benchpress} %</p>
-                <p>Squat: {userProgress.squat} %</p>
-                <p>Deadlift: {userProgress.deadlift} %</p>
-            </div>
-            <br />
+    const [currentPage, setCurrentPage] = useState('home');
 
-            <div style={styles.progressTitle}>
-                <h4 style={styles.header}>Weight</h4>
-                <div style={styles.progressBar}>
-                    <div style={styles.loadingWeight}>
-                        {userProgress.weight}%
-                    </div>
-                </div >
-            </div>
-            <br />
+    const renderPage = () => {
+        // Redirects to page based on button click
+        switch (currentPage) {
+            case 'homePage':
+                return <App />
+            case 'setGoals':
+                return <SetGoals />;
+            case 'logExercise':
+                return <LogExercise />
+            case 'trackProgress':
+                return <TrackProgress />
 
-            <div style={styles.progressTitle}>
-                <h4 style={styles.header}>Benchpress</h4>
-                <div style={styles.progressBar}>
-                    <div style={styles.loadingBenchpress}>
-                        {userProgress.benchpress}%
-                    </div>
-                </div>
-            </div>
-            <br />
+            default:
+                return (
+                    <div>
+                        <div className='Title'>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('homePage')}>
+                                    Home
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('logExercise')}>
+                                    Log Exercise
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('setGoals')}>
+                                    Set Goals
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('trackProgress')}>
+                                    Track Progress
+                                </button>
+                            </div>
+                        </div>
+                        <div className='user-progress' style={styles.userProgress}>
+                            <h3>Progress</h3>
+                            <p>Weight: {userProgress.weight} %</p>
+                            <p>Benchpress: {userProgress.benchpress} %</p>
+                            <p>Squat: {userProgress.squat} %</p>
+                            <p>Deadlift: {userProgress.deadlift} %</p>
+                        </div>
 
-            <div style={styles.progressTitle}>
-                <h4 style={styles.header}>Squat</h4>
-                <div style={styles.progressBar}>
-                    <div style={styles.loadingSquat}>
-                        {userProgress.squat}%
-                    </div>
-                </div>
-            </div>
-            <br />
+                        <div style={styles.progressTitle}>
+                            <h4 style={styles.header}>Weight</h4>
+                            <div style={styles.progressBar}>
+                                <div style={styles.loadingWeight}>
+                                    {userProgress.weight}%
+                                </div>
+                            </div >
+                        </div>
+                        <br />
 
-            <div style={styles.progressTitle}>
-                <h4 style={styles.header}>Deadlift</h4>
-                <div style={styles.progressBar}>
-                    <div style={styles.loadingDeadlift}>
-                        {userProgress.deadlift}%
-                    </div>
-                </div>
-            </div>
-        </div >
-    );
+                        <div style={styles.progressTitle}>
+                            <h4 style={styles.header}>Benchpress</h4>
+                            <div style={styles.progressBar}>
+                                <div style={styles.loadingBenchpress}>
+                                    {userProgress.benchpress}%
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div style={styles.progressTitle}>
+                            <h4 style={styles.header}>Squat</h4>
+                            <div style={styles.progressBar}>
+                                <div style={styles.loadingSquat}>
+                                    {userProgress.squat}%
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                        <div style={styles.progressTitle}>
+                            <h4 style={styles.header}>Deadlift</h4>
+                            <div style={styles.progressBar}>
+                                <div style={styles.loadingDeadlift}>
+                                    {userProgress.deadlift}%
+                                </div>
+                            </div>
+                        </div>
+                    </div >
+                );
+        }
+    };
+    return <>{renderPage()}</>;
 }
 export default TrackProgress;

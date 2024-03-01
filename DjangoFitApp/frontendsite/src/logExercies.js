@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import TrackProgress from './trackProgress';
+import SetGoals from './setGoals';
+import App from './App';
 
 function LogExercise() {
 
@@ -60,18 +63,17 @@ function LogExercise() {
     };
 
     /*
-`   Full CSS for goals form submission component
+`   Full CSS for log exercise form submission component
     */
     const styles = {
-        setGoalForm: {
+        logExerciseForm: {
+            marginTop: '20px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '100vh',
+            height: '100%',
         },
-        setUserGoals: {
-            position: 'fixed',
-            top: '20px',
+        logExercise: {
             width: '250px',
             padding: '15px',
             border: '1px solid #ccc',
@@ -102,73 +104,105 @@ function LogExercise() {
         buttonHover: {
             backgroundColor: '#45a049',
         },
-        currentGoals: {
-            marginBottom: '10px',
-            h3: {
-                fontSize: '26px',
-                fontWeight: 'bold',
-            },
-            p: {
-                fontSize: '16px',
-                fontWeight: 'bold',
-            }
-        }
     };
 
 
-    return (
-        <div className="set-goal-form" style={styles.setGoalForm}>
-            <div className="set-user-goals" style={styles.setUserGoals}>
-                <h2 style={styles.h2}>Todays Metrics</h2>
-                <form onSubmit={handleFormSubmit}>
-                    <label style={styles.label}>
-                        Weight:
-                        <input
-                            type="number"
-                            name="weight"
-                            value={userCurrent.weight}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <label style={styles.label}>
-                        Benchpress:
-                        <input
-                            type="number"
-                            name="benchpress"
-                            value={userCurrent.benchpress}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <label style={styles.label}>
-                        Squat:
-                        <input
-                            type="number"
-                            name="squat"
-                            value={userCurrent.squat}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <label style={styles.label}>
-                        Deadlift:
-                        <input
-                            type="number"
-                            name="deadlift"
-                            value={userCurrent.deadlift}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <button type="submit" style={styles.button}>Submit Todays Metrics</button>
-                </form>
-            </div>
-        </div>
-    );
+
+    const [currentPage, setCurrentPage] = useState('home');
+
+    const renderPage = () => {
+        // Redirects to page based on button click
+        switch (currentPage) {
+            case 'homePage':
+                return <App />
+            case 'setGoals':
+                return <SetGoals />;
+            case 'logExercise':
+                return <LogExercise />
+            case 'trackProgress':
+                return <TrackProgress />
+
+            default:
+                return (
+                    <div>
+                        <div className='Title'>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('homePage')}>
+                                    Home
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('logExercise')}>
+                                    Log Exercise
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('setGoals')}>
+                                    Set Goals
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('trackProgress')}>
+                                    Track Progress
+                                </button>
+                            </div>
+                        </div>
+                        <div className="log-exercise-form" style={styles.logExerciseForm}>
+                            <div className="log-exercise" style={styles.logExercise}>
+                                <h2 style={styles.h2}>Todays Metrics</h2>
+                                <form onSubmit={handleFormSubmit}>
+                                    <label style={styles.label}>
+                                        Weight (lbs):
+                                        <input
+                                            type="number"
+                                            name="weight"
+                                            value={userCurrent.weight}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <label style={styles.label}>
+                                        Benchpress (lbs):
+                                        <input
+                                            type="number"
+                                            name="benchpress"
+                                            value={userCurrent.benchpress}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <label style={styles.label}>
+                                        Squat (lbs):
+                                        <input
+                                            type="number"
+                                            name="squat"
+                                            value={userCurrent.squat}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <label style={styles.label}>
+                                        Deadlift (lbs):
+                                        <input
+                                            type="number"
+                                            name="deadlift"
+                                            value={userCurrent.deadlift}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <button type="submit" style={styles.button}>Submit Todays Metrics</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                );
+        }
+    };
+    return <>{renderPage()}</>;
 }
 export default LogExercise;

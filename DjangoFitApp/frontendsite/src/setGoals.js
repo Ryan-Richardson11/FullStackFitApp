@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import LogExercise from './logExercies';
+import TrackProgress from './trackProgress';
+import App from './App';
 
 function SetGoals() {
 
@@ -114,14 +117,13 @@ function SetGoals() {
     */
     const styles = {
         setGoalForm: {
+            marginTop: '20px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '100vh',
+            height: '100%',
         },
         setUserGoals: {
-            position: 'fixed',
-            top: '20px',
             width: '250px',
             padding: '15px',
             border: '1px solid #ccc',
@@ -165,67 +167,108 @@ function SetGoals() {
         }
     };
 
+    const [currentPage, setCurrentPage] = useState('home');
 
-    return (
-        <div className="set-goal-form" style={styles.setGoalForm}>
-            <div className="set-user-goals" style={styles.setUserGoals}>
-                <h2 style={styles.h2}>Goals</h2>
-                <form onSubmit={handleFormSubmit}>
-                    <label style={styles.label}>
-                        Weight:
-                        <input
-                            type="number"
-                            name="weight"
-                            value={userGoals.weight}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <label style={styles.label}>
-                        Benchpress:
-                        <input
-                            type="number"
-                            name="benchpress"
-                            value={userGoals.benchpress}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <label style={styles.label}>
-                        Squat:
-                        <input
-                            type="number"
-                            name="squat"
-                            value={userGoals.squat}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <label style={styles.label}>
-                        Deadlift:
-                        <input
-                            type="number"
-                            name="deadlift"
-                            value={userGoals.deadlift}
-                            onChange={handleInputChange}
-                            style={styles.input}
-                        />
-                    </label>
-                    <br />
-                    <button type="submit" style={styles.button}>Set Goals</button>
-                </form>
-                <div className='current-goals'>
-                    <h3>Current Goals</h3>
-                    <p>Weight: {currentGoals.weight}</p>
-                    <p>Benchpress: {currentGoals.benchpress}</p>
-                    <p>Squat: {currentGoals.squat}</p>
-                    <p>Deadlift: {currentGoals.deadlift}</p>
-                </div>
-            </div>
-        </div>
-    );
+    const renderPage = () => {
+        // Redirects to page based on button click
+        switch (currentPage) {
+            case 'homePage':
+                return <App />
+            case 'setGoals':
+                return <SetGoals />;
+            case 'logExercise':
+                return <LogExercise />
+            case 'trackProgress':
+                return <TrackProgress />
+
+            default:
+                return (
+                    <div>
+                        <div className='Title'>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('homePage')}>
+                                    Home
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('logExercise')}>
+                                    Log Exercise
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('setGoals')}>
+                                    Set Goals
+                                </button>
+                            </div>
+                            <div className="nav-button">
+                                <button onClick={() => setCurrentPage('trackProgress')}>
+                                    Track Progress
+                                </button>
+                            </div>
+                        </div>
+                        <div className="set-goal-form" style={styles.setGoalForm}>
+                            <div className="set-user-goals" style={styles.setUserGoals}>
+                                <h2 style={styles.h2}>Goals</h2>
+                                <form onSubmit={handleFormSubmit}>
+                                    <label style={styles.label}>
+                                        Weight (lbs):
+                                        <input
+                                            type="number"
+                                            name="weight"
+                                            value={userGoals.weight}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <label style={styles.label}>
+                                        Benchpress (lbs):
+                                        <input
+                                            type="number"
+                                            name="benchpress"
+                                            value={userGoals.benchpress}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <label style={styles.label}>
+                                        Squat (lbs):
+                                        <input
+                                            type="number"
+                                            name="squat"
+                                            value={userGoals.squat}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <label style={styles.label}>
+                                        Deadlift (lbs):
+                                        <input
+                                            type="number"
+                                            name="deadlift"
+                                            value={userGoals.deadlift}
+                                            onChange={handleInputChange}
+                                            style={styles.input}
+                                        />
+                                    </label>
+                                    <br />
+                                    <button type="submit" style={styles.button}>Set Goals</button>
+                                </form>
+                                <div className='current-goals'>
+                                    <h3>Current Goals</h3>
+                                    <p>Weight (lbs): {currentGoals.weight}</p>
+                                    <p>Benchpress (lbs): {currentGoals.benchpress}</p>
+                                    <p>Squat (lbs): {currentGoals.squat}</p>
+                                    <p>Deadlift (lbs): {currentGoals.deadlift}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                );
+        }
+    };
+    return <>{renderPage()}</>;
 }
 export default SetGoals;

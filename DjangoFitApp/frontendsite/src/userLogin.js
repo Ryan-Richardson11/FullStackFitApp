@@ -42,7 +42,7 @@ function UserLogin() {
     const styles = {
         UserLogin: {
             position: 'fixed',
-            top: '10px',
+            top: '150px',
             left: '10px',
             width: '250px',
             padding: '15px',

@@ -20,11 +20,6 @@ function AllUsers() {
     }, []); // The empty dependency array ensures the effect runs only once on component mount
 
     // You can return some content or null based on your needs
-    return (
-        <div>
-            <p>Fetching all users...</p>
-        </div>
-    );
 }
 
 export default AllUsers;
