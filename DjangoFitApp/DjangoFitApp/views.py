@@ -173,6 +173,13 @@ def log_exercise(request):
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
+"""
+API endpoint for returning the users current progress towards a goal.
+Calculations based on current metrics and goal metrics.
+User should already be logged into their accounts.
+"""
+
+
 @api_view(['GET'])
 @login_required
 def track_progress(request):

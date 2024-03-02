@@ -12,6 +12,11 @@ function TrackProgress() {
         deadlift: '',
     });
 
+    /*
+    Sends a request to backend API (track_progress) where the progress is calculated
+    Use of authorization token in request
+    
+    */
     const fetchProgress = async () => {
         try {
             const authToken = sessionStorage.getItem('authToken');

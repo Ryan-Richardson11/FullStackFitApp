@@ -1,4 +1,5 @@
-// creates an authentication token for a user during login
+/*
+*/
 export const getAuthToken = async (userData) => {
     try {
         const response = await fetch(`http://localhost:8000/api/user_login/`, {
