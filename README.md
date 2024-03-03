@@ -4,11 +4,12 @@
 
 ## Table of Contents
 
-- Token based user creation, login, and authentication
-- Set Goals desired to reach
-- Update your current metrics each day
-- Track progress towards current goals
-- Tracks weight, benchpress, squats, and deadlifts
+- [About](#about)
+- [User Create Account](#user-create-account)
+- [User Login](#user-login)
+- [Set Goals](#set-goals)
+- [Log Exercise](#log-exercise)
+- [Track Progress](#track-progress)
 
 ##User Create Account:
 
