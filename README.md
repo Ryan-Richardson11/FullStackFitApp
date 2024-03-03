@@ -1,10 +1,9 @@
-Full Stack Fitness Tracking Application (Django + React.js)
+## Full Stack Fitness Tracking Application (Django + React.js)
 
-This project employs a React front end that interacts with a Django backend and MySQL database.
+## This project employs a React frontend that interacts with a Django backend and MySQL database.
 
-Table of Contents
+## Table of Contents
 
-## About
 - Token based user creation, login, and authentication
 - Set Goals desired to reach
 - Update your current metrics each day
