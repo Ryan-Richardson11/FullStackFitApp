@@ -4,14 +4,13 @@
 
 ## Table of Contents
 
-- [About](#about)
 - [User Create Account](#user-create-account)
 - [User Login](#user-login)
 - [Set Goals](#set-goals)
 - [Log Exercise](#log-exercise)
 - [Track Progress](#track-progress)
 
-##User Create Account:
+## User Create Account:
 
 - Users are prompted to create an account upon opening the home page.
 
