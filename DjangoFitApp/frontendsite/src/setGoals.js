@@ -4,14 +4,14 @@ import TrackProgress from './trackProgress';
 import App from './App';
 
 function SetGoals() {
-
+    // Sets users new goals
     const [userGoals, setUserGoals] = useState({
         weight: '',
         benchpress: '',
         squat: '',
         deadlift: '',
     });
-
+    // Displays users current goals
     const [currentGoals, setCurrentGoals] = useState({
         weight: '',
         benchpress: '',
@@ -19,8 +19,10 @@ function SetGoals() {
         deadlift: '',
     });
 
-    // Fetches current goals from the back end 
-
+    /*
+    Fetches current goals from the back end to be displayed
+    Shown upon page opening, updated when form is submitted
+    */
     const fetchGoals = async () => {
         try {
             const authToken = sessionStorage.getItem('authToken');
@@ -68,7 +70,11 @@ function SetGoals() {
         });
     };
 
-    // Handles form submission and make a call to the backend to update
+    /*
+    Converts values to floats and checks for auth token
+    Fetch request for set_goals in the backend
+    Goals updated in the database
+    */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         const authToken = sessionStorage.getItem('authToken');

@@ -15,7 +15,7 @@ function TrackProgress() {
     /*
     Sends a request to backend API (track_progress) where the progress is calculated
     Use of authorization token in request
-    
+    Returns percentages towards goal and progress bar chart is diplayed
     */
     const fetchProgress = async () => {
         try {

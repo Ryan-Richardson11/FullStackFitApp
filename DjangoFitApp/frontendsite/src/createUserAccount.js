@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 function CreateUserAccount() {
+    // Values needed to create user account
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -17,7 +18,11 @@ function CreateUserAccount() {
         });
     };
 
-    // Handles form submission
+    /*
+    Fetch request to backend create_user
+    Checks if the user already exists
+    If not a new user is created and stored in the database
+    */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 

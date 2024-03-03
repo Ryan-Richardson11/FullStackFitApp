@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { getAuthToken } from './utilities';
 
 function UserLogin() {
+    // Data needed for the user to login 
     const [userData, setUserData] = useState({
         username: '',
         password: '',
@@ -17,7 +18,12 @@ function UserLogin() {
         });
     };
 
-    // Handles form submission
+    /*
+    Calls getAuthToken from the utility.js file
+    Request is sent to backend and a token is returned if the user is present
+    Token is stored in session storage while the user interacts with the functions
+    Token is used for subsequent actions on the frontend
+    */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 

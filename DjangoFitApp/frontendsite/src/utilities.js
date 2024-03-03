@@ -1,4 +1,8 @@
 /*
+Fetch method to django backend.
+No current authentication needed
+Returns token if user is present in MySQL database
+Called in handleFormSubmit() function in userLogin.js file
 */
 export const getAuthToken = async (userData) => {
     try {

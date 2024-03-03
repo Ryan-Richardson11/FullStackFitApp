@@ -4,7 +4,7 @@ import SetGoals from './setGoals';
 import App from './App';
 
 function LogExercise() {
-
+    // Values to be logged for daily metrics
     const [userCurrent, setUserCurrent] = useState({
         weight: '',
         benchpress: '',
@@ -20,7 +20,11 @@ function LogExercise() {
         });
     };
 
-    // Handles form submission and make a call to the backend to update
+    /*
+    Converts inputed values to floats
+    Fetch request to backend log_exercise
+    values are stored in MySQL database as the users current goals
+    */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
         const authToken = sessionStorage.getItem('authToken');

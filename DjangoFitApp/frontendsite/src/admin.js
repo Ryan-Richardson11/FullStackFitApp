@@ -1,5 +1,9 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
+/*
+Function used to return all users and specific values in the database while the server is running
+viewed in dev tools for development purposes.
+*/
 function AllUsers() {
     useEffect(() => {
         const fetchAllUsers = async () => {
@@ -19,7 +23,6 @@ function AllUsers() {
         fetchAllUsers();
     }, []); // The empty dependency array ensures the effect runs only once on component mount
 
-    // You can return some content or null based on your needs
 }
 
 export default AllUsers;

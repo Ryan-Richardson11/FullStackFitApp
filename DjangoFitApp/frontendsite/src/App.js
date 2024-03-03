@@ -7,6 +7,12 @@ import AllUsers from './admin';
 import LogExercise from './logExercies';
 import TrackProgress from './trackProgress';
 
+/*
+Homepage for application
+Contains menu for other components as well as login and create user account
+admin.js function AllUsers called for development purposes
+*/
+
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
