@@ -26,14 +26,20 @@ function UserLogin() {
     */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        var outputMessageLogin = document.getElementById('outputMessageLogin');
 
         try {
             const token = await getAuthToken(userData);
-
-            // Store the token
-            sessionStorage.setItem('authToken', token);
-
-            console.log('Successfully logged in');
+            if (token) {
+                // Store the token
+                sessionStorage.setItem('authToken', token);
+                console.log('Successfully logged in');
+                outputMessageLogin.innerText = 'Login successful!';
+                outputMessageLogin.style.color = '#0a1d0b'
+            } else {
+                outputMessageLogin.innerText = 'Unable to login';
+                outputMessageLogin.style.color = '#611616'
+            }
         } catch (error) {
             console.error('Error:', error);
         }
@@ -109,6 +115,7 @@ function UserLogin() {
                 </label>
                 <br />
                 <button type="submit">Login</button>
+                <p id='outputMessageLogin'></p>
             </form>
         </div>
     );

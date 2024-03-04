@@ -20,7 +20,7 @@ export const getAuthToken = async (userData) => {
             console.log('Received Token:', token);
             return token;
         } else {
-            throw new Error('Error logging in');
+            console.log('Error logging in');
         }
     } catch (error) {
         throw new Error(error.message);

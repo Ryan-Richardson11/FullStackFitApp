@@ -25,7 +25,7 @@ function CreateUserAccount() {
     */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        var outputMessage = document.getElementById('outputMessage');
+        var outputMessageCreateAccount = document.getElementById('outputMessageCreateAccount');
 
         try {
             console.log('User Data:', userData);
@@ -40,12 +40,12 @@ function CreateUserAccount() {
             // Check if the request was successful
             if (response.ok) {
                 console.log('User created successfully');
-                outputMessage.innerText = 'User created successfully!';
-                outputMessage.style.color = '#4caf50'
+                outputMessageCreateAccount.innerText = 'User created successfully!';
+                outputMessageCreateAccount.style.color = '#0a1d0b'
             } else {
                 console.error('Error creating user');
-                outputMessage.innerText = 'Unable to create user';
-                outputMessage.style.color = '#FF0000'
+                outputMessageCreateAccount.innerText = 'Unable to create user';
+                outputMessageCreateAccount.style.color = '#611616'
             }
         } catch (error) {
             console.error('Error:', error);
@@ -96,7 +96,7 @@ function CreateUserAccount() {
                 </label>
                 <br />
                 <button type="submit">Create Account</button>
-                <p id='outputMessage'></p>
+                <p id='outputMessageCreateAccount'></p>
             </form>
         </div>
     );
