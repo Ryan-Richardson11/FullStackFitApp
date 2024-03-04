@@ -25,6 +25,7 @@ function CreateUserAccount() {
     */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        var outputMessage = document.getElementById('outputMessage');
 
         try {
             console.log('User Data:', userData);
@@ -39,8 +40,12 @@ function CreateUserAccount() {
             // Check if the request was successful
             if (response.ok) {
                 console.log('User created successfully');
+                outputMessage.innerText = 'User created successfully!';
+                outputMessage.style.color = '#4caf50'
             } else {
                 console.error('Error creating user');
+                outputMessage.innerText = 'Unable to create user';
+                outputMessage.style.color = '#FF0000'
             }
         } catch (error) {
             console.error('Error:', error);
@@ -91,6 +96,7 @@ function CreateUserAccount() {
                 </label>
                 <br />
                 <button type="submit">Create Account</button>
+                <p id='outputMessage'></p>
             </form>
         </div>
     );
