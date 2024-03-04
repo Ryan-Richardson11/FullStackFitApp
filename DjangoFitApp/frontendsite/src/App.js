@@ -32,9 +32,11 @@ function App() {
           <div>
             <div className='Title-home'>
               <div className='title-text'>
-                <button onClick={() => logOut()}>
-                  Log Out
-                </button>
+                <div className='log-out-button'>
+                  <button onClick={() => logOut()}>
+                    Log Out
+                  </button>
+                </div>
                 <h1>Reps</h1>
               </div>
             </div>

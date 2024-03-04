@@ -29,6 +29,23 @@ body {
   font-weight: bold;
 }
 
+.log-out-button button {
+  background-color: #1f2d58;
+  position: fixed;
+  top: 10px;
+  left: 30px;
+  padding: 20px;
+  width: 150px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px -1px 10px -4px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  outline: none;
+}
+
 .center-column {
   width: 600px;
   margin: 20px auto;
