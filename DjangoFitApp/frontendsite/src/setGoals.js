@@ -47,7 +47,7 @@ function SetGoals() {
                 setCurrentGoals(data);
             } else if (response.status === 401) {
                 console.error('Unauthorized - Clearing auth token');
-                localStorage.removeItem('authToken');
+                sessionStorage.removeItem('authToken');
             }
             else {
                 console.error('Error fetching goals');

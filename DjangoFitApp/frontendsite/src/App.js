@@ -6,6 +6,7 @@ import UserLogin from './userLogin';
 import AllUsers from './admin';
 import LogExercise from './logExercies';
 import TrackProgress from './trackProgress';
+import { logOut } from './utilities';
 
 /*
 Homepage for application
@@ -31,7 +32,10 @@ function App() {
           <div>
             <div className='Title-home'>
               <div className='title-text'>
-                <h1>My Fitness App</h1>
+                <button onClick={() => logOut()}>
+                  Log Out
+                </button>
+                <h1>Reps</h1>
               </div>
             </div>
             <div className="App">

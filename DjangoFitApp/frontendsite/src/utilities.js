@@ -27,4 +27,7 @@ export const getAuthToken = async (userData) => {
     }
 };
 
-// Add remove button logic
+export const logOut = () => {
+    sessionStorage.removeItem('authToken');
+    console.log("Successfully Logged out")
+}

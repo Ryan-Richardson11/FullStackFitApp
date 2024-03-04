@@ -49,7 +49,7 @@ function UserLogin() {
         UserLogin: {
             position: 'fixed',
             top: '150px',
-            left: '10px',
+            left: '30px',
             width: '250px',
             padding: '15px',
             border: '1px solid #ccc',
