@@ -1,4 +1,4 @@
-## Full Stack Fitness Tracking Application (Django + React.js)
+## Reps - Full Stack Fitness Tracking Application (Django + React.js)
 
 - This project employs a React frontend that interacts with a Django backend and MySQL database.
 
@@ -17,7 +17,8 @@
 - Account creation is necessary for all functions of the application to be tracked.
 
 
-![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/072dde3f-c13c-4e43-a99e-c6c3dfbf75b4)
+![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/bdf491c7-f1f2-4aea-a659-bdef356fdbb7)
+
 
 
 
