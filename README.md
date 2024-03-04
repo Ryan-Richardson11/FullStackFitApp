@@ -17,9 +17,7 @@
 - Account creation is necessary for all functions of the application to be tracked.
 
 
-![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/bdf491c7-f1f2-4aea-a659-bdef356fdbb7)
-
-
+![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/3a2634b1-7b44-487e-b58f-83eff8431700)
 
 
 ## User Login:
@@ -29,6 +27,8 @@
 - Upon logging in, a request is sent to the backend user_login() and a unique token is returned and stored in session storage.
 
 - The token is then used for all subsequent calls to the backend to send and retrieve information distinctive to that user.
+
+- The user has the option to log out on the home page which will remove the token from session storage and prevent further api requests.
 
 - Errors are handled based on no authentication token being found in the request.
 
