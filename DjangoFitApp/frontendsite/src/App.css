@@ -128,7 +128,9 @@ body {
 }
 
 #outputMessageCreateAccount,
-#outputMessageLogin {
+#outputMessageLogin,
+#outputMessageSetGoals,
+#outputMessageLogExercise {
   font-size: 18px;
   font-weight: bold;
 }

@@ -27,9 +27,12 @@ function LogExercise() {
     */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        var outputMessageLogExercise = document.getElementById('outputMessageLogExercise');
         const authToken = sessionStorage.getItem('authToken');
         if (!authToken) {
             console.error('No auth token found');
+            outputMessageLogExercise.innerText = 'Unable to set goals';
+            outputMessageLogExercise.style.color = '#611616'
             return;
         }
 
@@ -58,8 +61,12 @@ function LogExercise() {
             if (response.ok) {
                 // Fetch goals again to get the updated goals
                 console.log('Todays Metrics Updated');
+                outputMessageLogExercise.innerText = 'Goals updated successfully!';
+                outputMessageLogExercise.style.color = '#0a1d0b'
             } else {
                 console.error('Error setting goals');
+                outputMessageLogExercise.innerText = 'Unable to set goals';
+                outputMessageLogExercise.style.color = '#611616'
             }
         } catch (error) {
             console.error('Error:', error);
@@ -207,6 +214,7 @@ function LogExercise() {
                                     </label>
                                     <br />
                                     <button type="submit" style={styles.button}>Submit Todays Metrics</button>
+                                    <p id='outputMessageLogExercise'></p>
                                 </form>
                             </div>
                         </div>

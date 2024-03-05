@@ -77,9 +77,12 @@ function SetGoals() {
     */
     const handleFormSubmit = async (e) => {
         e.preventDefault();
+        var outputMessageSetGoals = document.getElementById('outputMessageSetGoals');
         const authToken = sessionStorage.getItem('authToken');
         if (!authToken) {
             console.error('No auth token found');
+            outputMessageSetGoals.innerText = 'Unable to set goals';
+            outputMessageSetGoals.style.color = '#611616'
             return;
         }
 
@@ -110,8 +113,12 @@ function SetGoals() {
                 // Fetch goals again to get the updated goals
                 fetchGoals();
                 console.log('Goals set successfully');
+                outputMessageSetGoals.innerText = 'Goals updated successfully!';
+                outputMessageSetGoals.style.color = '#0a1d0b'
             } else {
                 console.error('Error setting goals');
+                outputMessageSetGoals.innerText = 'Unable to set goals';
+                outputMessageSetGoals.style.color = '#611616'
             }
         } catch (error) {
             console.error('Error:', error);
@@ -268,6 +275,7 @@ function SetGoals() {
                                     </label>
                                     <br />
                                     <button type="submit" style={styles.button}>Set Goals</button>
+                                    <p id='outputMessageSetGoals'></p>
                                 </form>
                                 <div className='current-goals'>
                                     <h3>Current Goals</h3>
