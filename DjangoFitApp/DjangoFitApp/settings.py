@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 
 
-TEST
+TEST 2
 """
 
 from pathlib import Path
