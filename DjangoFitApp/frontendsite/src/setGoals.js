@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import LogExercise from './logExercies';
 import TrackProgress from './trackProgress';
 import App from './App';
+import DisplayProfile from './displayProfile';
 
 function SetGoals() {
     // Sets users new goals
@@ -33,7 +34,7 @@ function SetGoals() {
 
             console.log('Received Token:', authToken);
 
-            const response = await fetch('http://localhost:8000/api/get_goals', {
+            const response = await fetch('http://localhost:8000/api/get_goals/', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -225,6 +226,7 @@ function SetGoals() {
                                     Track Progress
                                 </button>
                             </div>
+                            <DisplayProfile />
                         </div>
                         <div className="set-goal-form" style={styles.setGoalForm}>
                             <div className="set-user-goals" style={styles.setUserGoals}>

@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from .views import create_user, set_goals, get_goals, user_login, get_all_users, log_exercise, track_progress
+from .views import create_user, set_goals, get_goals, user_login, get_all_users, log_exercise, track_progress, display_profile, set_picture
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,8 @@ urlpatterns = [
     path('api/get_all_users/', get_all_users, name='get_all_users'),
     path('api/log_exercise/', log_exercise, name='log_exercise'),
     path('api/track_progress/', track_progress, name='track_progress'),
+    path('api/display_profile/', display_profile, name='display_profile'),
+    path('api/set_picture/', set_picture, name='set_picture'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

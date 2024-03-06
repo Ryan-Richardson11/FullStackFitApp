@@ -22,6 +22,10 @@ class UserProfile(models.Model):
     squat_progress = models.FloatField(null=True, blank=True)
     deadlift_progress = models.FloatField(null=True, blank=True)
 
+    # User profile picture
+    picture = models.ImageField(
+        upload_to='profile_pictures/', null=True, blank=True)
+
     def set_goals(self, **kwargs):
         for goal_type, value in kwargs.items():
             setattr(self, f"{goal_type}_goal", value)

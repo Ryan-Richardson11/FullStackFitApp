@@ -9,6 +9,8 @@ from .models import UserProfile, User
 from django.contrib.auth import authenticate
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 
 """
 API endpoint for creating a new user in the database.
@@ -58,7 +60,6 @@ If they are, enables access to user data/updating data.
 @authentication_classes([])
 @permission_classes([])
 def user_login(request):
-    print('Request Data:', request.data)
     try:
         # Extract data from request
         username = request.data.get('username')
@@ -258,3 +259,48 @@ def get_all_users(request):
 
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
+
+
+@api_view(['GET'])
+@login_required
+def display_profile(request):
+    try:
+        user = request.user
+        user_profile = UserProfile.objects.get(user=user)
+        picture_url = user_profile.picture.url if user_profile.picture else None
+
+        # Retrieve goals from user_profile
+        profile = {
+            'picture': picture_url,
+            'username': user_profile.user.username,
+            'email': user_profile.user.email,
+        }
+        print(profile)
+        return Response(profile, status=status.HTTP_200_OK)
+    except Exception as e:
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+@login_required
+def set_picture(request):
+    try:
+        user = request.user
+        # Extract data from request
+        new_picture = request.FILES.get('picture')
+        print('Received Picture Data:', new_picture)
+
+        # Update user profile with the new picture
+        user_profile, created = UserProfile.objects.get_or_create(user=user)
+        if new_picture:
+            file_name = default_storage.save(
+                f"profile_pictures/{new_picture.name}", ContentFile(new_picture.read()))
+            user_profile.picture = file_name
+
+        user_profile.save()
+
+        # Return success response
+        return Response({'message': 'New profile picture set'}, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        # Return error response
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
