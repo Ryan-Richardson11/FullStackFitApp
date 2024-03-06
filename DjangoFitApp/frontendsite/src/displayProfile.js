@@ -59,41 +59,50 @@ function DisplayProfile() {
             backgroundColor: '#1f2d58',
             display: 'flex',
             justifyContent: 'space-between',
-            alignItems: 'center',
+            alignItems: 'flex-start',
             top: '10px',
-            right: '30px',
+            right: '10px',
             padding: '20px',
             width: '250px',
             border: 'none',
             borderRadius: '3px',
             color: '#fff',
             boxShadow: '0px -1px 10px -4px rgba(0, 0, 0, 0.75)',
+            position: 'absolute',
         },
 
         profilePicture: {
-            marginRight: '10px', // Add margin between picture and text
-            borderRadius: '50%', // Make it a circle
+            borderRadius: '50%',
             overflow: 'hidden', // Ensure the image stays within the circle
-            width: '50px', // Adjust the width as needed
-            height: '50px', // Adjust the height as needed
+            width: '75px',
+            height: '75px',
             cursor: 'pointer',
             outline: 'none',
             position: 'relative',
+        },
+
+        profilePictureImage: {
+            maxWidth: '100%',
+            maxHeight: '100%',
+            objectFit: 'contain'
         },
 
         textContainer: {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-start',
+            marginLeft: '10px',
         },
 
         profileUsername: {
-            fontSize: '24px',
-            fontWeight: 'bold'
+            fontSize: '30px',
+            fontWeight: 'bold',
+            margin: '0',
         },
 
         profileEmail: {
-            fontSize: '12px'
+            fontSize: '12px',
+            margin: '0',
         }
     }
 
@@ -108,8 +117,12 @@ function DisplayProfile() {
                         style={{ display: 'none' }}
                         onChange={handleFileChange}
                     />
-                    <img alt='ProfilePicture' src={userProfile.picture} onClick={() => document.getElementById('fileInput').click()} />
-                    <div style={{ marginTop: '5px', cursor: 'pointer', color: '#fff' }}>Change Picture</div>
+                    <img
+                        alt='ProfilePicture'
+                        src={userProfile.picture}
+                        style={styles.profilePictureImage}
+                        onClick={() => document.getElementById('fileInput').click()}
+                    />
                 </label>
                 <div className='text-container' style={styles.textContainer}>
                     <div className='profile-username' style={styles.profileUsername}>
@@ -120,7 +133,7 @@ function DisplayProfile() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 export default DisplayProfile;
