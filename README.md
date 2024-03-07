@@ -17,7 +17,8 @@
 - Account creation is necessary for all functions of the application to be tracked.
 
 
-![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/3a2634b1-7b44-487e-b58f-83eff8431700)
+![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/3a3296ae-a433-4f2d-8448-4284f3f887d4)
+
 
 
 ## User Login:
