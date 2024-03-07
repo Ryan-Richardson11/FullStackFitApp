@@ -4,7 +4,7 @@ import { setProfilePicture } from './utilities';
 function DisplayProfile() {
 
     const [userProfile, setUserProfile] = useState({
-        picture: null,
+        picture: 'default.png',
         username: '',
         email: ''
     });
@@ -89,16 +89,16 @@ function DisplayProfile() {
 
         textContainer: {
             flexDirection: 'column',
-            justifyContent: 'flex-start',
+            textAlign: 'center',
             height: '70px',
-            width: '250px',
-            marginLeft: '50px',
+            width: '175px',
+            marginLeft: '90px',
             backgroundColor: 'black',
             position: 'absolute',
         },
 
         profileUsername: {
-            fontSize: '30px',
+            fontSize: '24px',
             fontWeight: 'bold',
             margin: '0',
         },
