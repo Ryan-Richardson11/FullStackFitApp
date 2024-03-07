@@ -7,6 +7,7 @@ import AllUsers from './admin';
 import LogExercise from './logExercies';
 import TrackProgress from './trackProgress';
 import { logOut } from './utilities';
+import DisplayProfile from './displayProfile';
 
 /*
 Homepage for application
@@ -39,6 +40,7 @@ function App() {
                 </div>
                 <h1>Reps</h1>
               </div>
+              <DisplayProfile />
             </div>
             <div className="App">
               <div className="center-column">

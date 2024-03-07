@@ -88,10 +88,13 @@ function DisplayProfile() {
         },
 
         textContainer: {
-            display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-start',
-            marginLeft: '10px',
+            height: '70px',
+            width: '250px',
+            marginLeft: '50px',
+            backgroundColor: 'black',
+            position: 'absolute',
         },
 
         profileUsername: {

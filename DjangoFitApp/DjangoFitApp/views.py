@@ -261,6 +261,12 @@ def get_all_users(request):
         return JsonResponse({'error': str(e)}, status=500)
 
 
+"""
+API endpoint fetching the users profile picture, username, and email.
+Displayed on each page of frontend.
+"""
+
+
 @api_view(['GET'])
 @login_required
 def display_profile(request):
@@ -279,6 +285,11 @@ def display_profile(request):
         return Response(profile, status=status.HTTP_200_OK)
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+"""
+API endpoint setting a new user profile picture, username, and email.
+"""
 
 
 @api_view(['POST'])
