@@ -89,16 +89,16 @@ function DisplayProfile() {
 
         textContainer: {
             flexDirection: 'column',
-            textAlign: 'center',
+            textAlign: 'left',
             height: '70px',
             width: '175px',
-            marginLeft: '90px',
-            backgroundColor: 'black',
+            marginLeft: '100px',
+            // backgroundColor: 'black',
             position: 'absolute',
         },
 
         profileUsername: {
-            fontSize: '24px',
+            fontSize: '30px',
             fontWeight: 'bold',
             margin: '0',
         },
