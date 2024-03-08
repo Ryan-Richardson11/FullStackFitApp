@@ -31,6 +31,7 @@ export const getAuthToken = async (userData) => {
 export const logOut = () => {
     sessionStorage.removeItem('authToken');
     console.log("Successfully Logged out")
+    window.location.reload();
 }
 
 // Sets a new profile picture for the user
@@ -61,6 +62,30 @@ export const setProfilePicture = async (file) => {
     } catch (error) {
         console.error('Error:', error);
         throw new Error(error.message);
+    }
+};
+
+// Fetch the user profile after an action
+export const fetchProfile = async (authToken) => {
+    try {
+        const response = await fetch(`http://localhost:8000/api/display_profile/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${authToken}`,
+            },
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return data;
+        } else {
+            console.error('Error fetching profile');
+            return null;
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        return null;
     }
 };
 

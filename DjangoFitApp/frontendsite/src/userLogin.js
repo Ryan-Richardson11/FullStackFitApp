@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { getAuthToken } from './utilities';
+import { getAuthToken, fetchProfile } from './utilities';
 
 function UserLogin() {
     // Data needed for the user to login 
@@ -36,6 +36,10 @@ function UserLogin() {
                 console.log('Successfully logged in');
                 outputMessageLogin.innerText = 'Login successful!';
                 outputMessageLogin.style.color = '#0a1d0b'
+
+                // Fetch the users profile
+                await fetchProfile();
+                window.location.reload();
             } else {
                 outputMessageLogin.innerText = 'Unable to login';
                 outputMessageLogin.style.color = '#611616'

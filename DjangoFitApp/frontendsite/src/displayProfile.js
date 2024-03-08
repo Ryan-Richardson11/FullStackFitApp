@@ -4,7 +4,7 @@ import { setProfilePicture } from './utilities';
 function DisplayProfile() {
 
     const [userProfile, setUserProfile] = useState({
-        picture: 'default.png',
+        // picture: 'default.png', TESTING
         username: '',
         email: ''
     });
