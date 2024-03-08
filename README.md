@@ -17,7 +17,7 @@
 - Account creation is necessary for all functions of the application to be tracked.
 
 
-![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/3a3296ae-a433-4f2d-8448-4284f3f887d4)
+![HomePage](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/1e718cac-0738-44e7-b32a-35c4f3107a86)
 
 
 
@@ -43,8 +43,7 @@
 - A request with a authentication token will be sent to set_goals() on the backend, which will update the users goal in the database.
 
 
-![SetGoals](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/cb995cbe-4b08-4c89-868d-738e6b4ae321)
-
+![SetGoals](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/b48db05a-b264-4542-b5e6-43bd45783cd2)
 
 
 ## Log Exercise:
@@ -56,8 +55,7 @@
 - A request with a authentication token will be sent to log_exercise() on the backend, which will update the users current metrics in the database.
 
 
-![LogExercise](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/6f605813-4082-4d71-b2d9-5c6ae9d18b3e)
-
+![LogExercise](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/782e5d3d-049a-456a-b74c-7590fc3edea1)
 
 
 ## Track Progress:
@@ -71,5 +69,6 @@
 - All values are drawn out on a progress bar chart along with percentages.
 
 
-![TrackProgress](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/3b15550d-f964-41ad-a7ee-252a5c3f7fbb)
+![TrackProgress](https://github.com/Ryan-Richardson11/FullStackFitApp/assets/125044341/a67cd8b6-7692-44db-b288-aeccf0408bef)
+
 
