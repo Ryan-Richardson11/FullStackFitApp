@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { getAuthToken, fetchProfile } from './utilities';
+import { getAuthToken } from './utilities';
 
 function UserLogin() {
     // Data needed for the user to login 
@@ -34,11 +34,7 @@ function UserLogin() {
                 // Store the token
                 sessionStorage.setItem('authToken', token);
                 console.log('Successfully logged in');
-                // Fetch the users profile
-                // await fetchProfile();
                 window.location.reload();
-                outputMessageLogin.innerText = 'Login successful!';
-                outputMessageLogin.style.color = '#0a1d0b'
 
             } else {
                 outputMessageLogin.innerText = 'Unable to login';
@@ -58,7 +54,7 @@ function UserLogin() {
     const styles = {
         UserLogin: {
             position: 'fixed',
-            top: '150px',
+            top: '180px',
             left: '30px',
             width: '250px',
             padding: '15px',

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import TrackProgress from './trackProgress';
 import SetGoals from './setGoals';
 import App from './App';
+import DisplayProfile from './displayProfile';
+import { logOut } from './utilities';
 
 function LogExercise() {
     // Values to be logged for daily metrics
@@ -144,6 +146,11 @@ function LogExercise() {
                 return (
                     <div>
                         <div className='Title'>
+                            <div className='log-out-button'>
+                                <button onClick={() => logOut()}>
+                                    Log Out
+                                </button>
+                            </div>
                             <div className="nav-button">
                                 <button onClick={() => setCurrentPage('homePage')}>
                                     Home
@@ -164,6 +171,7 @@ function LogExercise() {
                                     Track Progress
                                 </button>
                             </div>
+                            <DisplayProfile />
                         </div>
                         <div className="log-exercise-form" style={styles.logExerciseForm}>
                             <div className="log-exercise" style={styles.logExercise}>

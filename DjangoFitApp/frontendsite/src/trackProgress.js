@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import SetGoals from './setGoals';
 import LogExercise from './logExercies';
 import App from './App';
+import DisplayProfile from './displayProfile';
+import { logOut } from './utilities';
 
 function TrackProgress() {
 
@@ -146,6 +148,11 @@ function TrackProgress() {
                 return (
                     <div>
                         <div className='Title'>
+                            <div className='log-out-button'>
+                                <button onClick={() => logOut()}>
+                                    Log Out
+                                </button>
+                            </div>
                             <div className="nav-button">
                                 <button onClick={() => setCurrentPage('homePage')}>
                                     Home
@@ -166,6 +173,7 @@ function TrackProgress() {
                                     Track Progress
                                 </button>
                             </div>
+                            <DisplayProfile />
                         </div>
                         <div className='user-progress' style={styles.userProgress}>
                             <h3>Current Progress</h3>
@@ -179,7 +187,7 @@ function TrackProgress() {
                             <h4 style={styles.header}>Weight</h4>
                             <div style={styles.progressBar}>
                                 <div style={styles.loadingWeight}>
-                                    {userProgress.weight}%
+                                    <b>{userProgress.weight}%</b>
                                 </div>
                             </div >
                         </div>
@@ -189,7 +197,7 @@ function TrackProgress() {
                             <h4 style={styles.header}>Benchpress</h4>
                             <div style={styles.progressBar}>
                                 <div style={styles.loadingBenchpress}>
-                                    {userProgress.benchpress}%
+                                    <b>{userProgress.benchpress}%</b>
                                 </div>
                             </div>
                         </div>
@@ -199,7 +207,7 @@ function TrackProgress() {
                             <h4 style={styles.header}>Squat</h4>
                             <div style={styles.progressBar}>
                                 <div style={styles.loadingSquat}>
-                                    {userProgress.squat}%
+                                    <b>{userProgress.squat}%</b>
                                 </div>
                             </div>
                         </div>
@@ -209,7 +217,7 @@ function TrackProgress() {
                             <h4 style={styles.header}>Deadlift</h4>
                             <div style={styles.progressBar}>
                                 <div style={styles.loadingDeadlift}>
-                                    {userProgress.deadlift}%
+                                    <b>{userProgress.deadlift}%</b>
                                 </div>
                             </div>
                         </div>

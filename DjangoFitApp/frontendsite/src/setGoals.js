@@ -3,6 +3,7 @@ import LogExercise from './logExercies';
 import TrackProgress from './trackProgress';
 import App from './App';
 import DisplayProfile from './displayProfile';
+import { logOut } from './utilities';
 
 function SetGoals() {
     // Sets users new goals
@@ -206,6 +207,11 @@ function SetGoals() {
                 return (
                     <div>
                         <div className='Title'>
+                            <div className='log-out-button'>
+                                <button onClick={() => logOut()}>
+                                    Log Out
+                                </button>
+                            </div>
                             <div className="nav-button">
                                 <button onClick={() => setCurrentPage('homePage')}>
                                     Home

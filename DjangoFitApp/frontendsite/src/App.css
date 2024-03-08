@@ -24,7 +24,7 @@ body {
   flex-grow: 1;
   text-align: center;
   color: #fff;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -88,7 +88,7 @@ body {
 
 .user-create-account {
   position: fixed;
-  top: 150px;
+  top: 180px;
   right: 30px;
   width: 250px;
   padding: 15px;
