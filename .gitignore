@@ -2,6 +2,7 @@
 __pycache__/
 
 # Ignore the Django settings file
+DjangoFitApp/media/
 DjangoFitApp/DjangoFitApp/settings.py
 DjangoFitApp/DjangoFitApp/settings/__init__.py
 DjangoFitApp/DjangoFitApp/settings/local_settings.py
