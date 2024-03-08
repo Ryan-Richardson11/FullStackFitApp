@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { setProfilePicture } from './utilities';
 
 function DisplayProfile() {
@@ -9,7 +9,11 @@ function DisplayProfile() {
         email: ''
     });
 
+    // Used to prevent file manager from opening twice
+    const fileInputRef = useRef(null);
+
     const handleFileChange = async (event) => {
+        event.stopPropagation();
         const file = event.target.files[0];
         console.log('Selected File:', file);
         await setProfilePicture(file);
@@ -77,7 +81,7 @@ function DisplayProfile() {
 
         profilePicture: {
             borderRadius: '50%',
-            overflow: 'hidden', // Ensure the image stays within the circle
+            overflow: 'hidden',
             width: '75px',
             height: '75px',
             cursor: 'pointer',
@@ -97,7 +101,6 @@ function DisplayProfile() {
             height: '70px',
             width: '175px',
             marginLeft: '100px',
-            // backgroundColor: 'black',
             position: 'absolute',
         },
 
@@ -118,7 +121,7 @@ function DisplayProfile() {
             <div className='user-profile' style={styles.userProfile}>
                 <label htmlFor="fileInput" className='profile-picture' style={styles.profilePicture}>
                     <input
-                        id="fileInput"
+                        ref={fileInputRef}
                         type="file"
                         accept="image/*"
                         style={{ display: 'none' }}
@@ -128,7 +131,7 @@ function DisplayProfile() {
                         alt='ProfilePicture'
                         src={userProfile.picture || '/media/profile_pictures/default.png'}
                         style={styles.profilePictureImage}
-                        onClick={() => document.getElementById('fileInput').click()}
+                        onClick={() => fileInputRef.current.click()}
                     />
                 </label>
                 <div className='text-container' style={styles.textContainer}>
