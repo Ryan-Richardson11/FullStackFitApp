@@ -34,12 +34,12 @@ function UserLogin() {
                 // Store the token
                 sessionStorage.setItem('authToken', token);
                 console.log('Successfully logged in');
+                // Fetch the users profile
+                // await fetchProfile();
+                window.location.reload();
                 outputMessageLogin.innerText = 'Login successful!';
                 outputMessageLogin.style.color = '#0a1d0b'
 
-                // Fetch the users profile
-                await fetchProfile();
-                window.location.reload();
             } else {
                 outputMessageLogin.innerText = 'Unable to login';
                 outputMessageLogin.style.color = '#611616'

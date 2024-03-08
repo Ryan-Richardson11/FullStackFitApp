@@ -4,7 +4,7 @@ import { setProfilePicture } from './utilities';
 function DisplayProfile() {
 
     const [userProfile, setUserProfile] = useState({
-        // picture: 'default.png', TESTING
+        picture: '',
         username: '',
         email: ''
     });
@@ -48,7 +48,11 @@ function DisplayProfile() {
     };
 
     useEffect(() => {
-        fetchProfile();
+        const fetchData = async () => {
+            await fetchProfile();
+        };
+
+        fetchData();
     }, []);
 
     /*
@@ -122,7 +126,7 @@ function DisplayProfile() {
                     />
                     <img
                         alt='ProfilePicture'
-                        src={userProfile.picture}
+                        src={userProfile.picture || '/media/profile_pictures/default.png'}
                         style={styles.profilePictureImage}
                         onClick={() => document.getElementById('fileInput').click()}
                     />

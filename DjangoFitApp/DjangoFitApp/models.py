@@ -24,7 +24,7 @@ class UserProfile(models.Model):
 
     # User profile picture
     picture = models.ImageField(
-        upload_to='profile_pictures/', default='default.png', null=True, blank=True)
+        upload_to='profile_pictures/', default='/media/profile_pictures/default.png', blank=True)
 
     def set_goals(self, **kwargs):
         for goal_type, value in kwargs.items():
