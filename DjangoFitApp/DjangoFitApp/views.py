@@ -288,7 +288,8 @@ def display_profile(request):
 
 
 """
-API endpoint setting a new user profile picture, username, and email.
+API endpoint setting a new user profile picture from the file manager.
+Saved in Media/Profile_Pictures/
 """
 
 

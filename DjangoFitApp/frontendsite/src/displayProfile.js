@@ -20,6 +20,7 @@ function DisplayProfile() {
         await fetchProfile();
     };
 
+    // Fetches the users username, email and profile picture
     const fetchProfile = async () => {
         try {
             const authToken = sessionStorage.getItem('authToken');
@@ -50,7 +51,7 @@ function DisplayProfile() {
             return null;
         }
     };
-
+    // Called when component mounts
     useEffect(() => {
         const fetchData = async () => {
             await fetchProfile();

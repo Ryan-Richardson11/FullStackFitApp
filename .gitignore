@@ -1,8 +1,10 @@
 *.pyc
 __pycache__/
 
-# Ignore the Django settings file
+# Ignore user profile pictures
 DjangoFitApp/media/
+
+# Ignore the Django settings file
 DjangoFitApp/DjangoFitApp/settings.py
 DjangoFitApp/DjangoFitApp/settings/__init__.py
 DjangoFitApp/DjangoFitApp/settings/local_settings.py
