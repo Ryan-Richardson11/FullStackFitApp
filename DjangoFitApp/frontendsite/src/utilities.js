@@ -27,14 +27,11 @@ export const getAuthToken = async (userData) => {
     }
 };
 
-// Logs user out of the current session
-export const logOut = () => {
-    sessionStorage.removeItem('authToken');
-    console.log("Successfully Logged out")
-    window.location.reload();
-}
 
-// Sets a new profile picture for the user
+/*
+Sets a new profile picture for the user
+Use of FormData to send file request
+*/
 export const setProfilePicture = async (file) => {
     try {
         const authToken = sessionStorage.getItem('authToken');
@@ -64,3 +61,10 @@ export const setProfilePicture = async (file) => {
         throw new Error(error.message);
     }
 };
+
+// Logs user out of the current session
+export const logOut = () => {
+    sessionStorage.removeItem('authToken');
+    console.log("Successfully Logged out")
+    window.location.reload();
+}
