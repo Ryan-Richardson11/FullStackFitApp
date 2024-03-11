@@ -20,7 +20,10 @@ function DisplayProfile() {
         await fetchProfile();
     };
 
-    // Fetches the users username, email and profile picture
+    /* 
+    Fetches the users username, email and profile picture
+    page should reload and display profile component
+    */
     const fetchProfile = async () => {
         try {
             const authToken = sessionStorage.getItem('authToken');
