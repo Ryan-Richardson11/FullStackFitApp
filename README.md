@@ -33,6 +33,8 @@
 
 - Errors are handled based on no authentication token being found in the request.
 
+- User Profile is fetched with a profile picture, username, and email upon login. Profile component is mounted on each subseqent page unitl the user logs out
+
 
 ## Set Goals:
 
